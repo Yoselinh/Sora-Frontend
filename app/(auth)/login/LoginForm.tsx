@@ -1,21 +1,25 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { ApiException } from "@/lib/api";
 import { loginReal, rutaPorRol } from "@/lib/auth";
 
 export default function LoginForm() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const recienRegistrado = searchParams.get("registrado") === "1";
-  const sesionExpirada = searchParams.get("expirado") === "1";
-
+  const [recienRegistrado, setRecienRegistrado] = useState(false);
+  const [sesionExpirada, setSesionExpirada] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [cargando, setCargando] = useState(false);
+
+  useEffect(() => {
+    const parametros = new URLSearchParams(window.location.search);
+    setRecienRegistrado(parametros.get("registrado") === "1");
+    setSesionExpirada(parametros.get("expirado") === "1");
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
