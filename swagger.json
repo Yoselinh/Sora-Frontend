@@ -1,0 +1,445 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "Sora API",
+    "description": "API del proyecto Sora",
+    "version": "v1"
+  },
+  "paths": {
+    "/api/Auth/login": {
+      "post": {
+        "tags": [ "Auth" ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/LoginCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/Auth/register": {
+      "post": {
+        "tags": [ "Auth" ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AddUsuarioCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/cotizaciones": {
+      "get": {
+        "tags": [ "Cotizaciones" ],
+        "parameters": [
+          { "name": "pageNumber", "in": "query", "schema": { "type": "integer", "format": "int32", "default": 1 } },
+          { "name": "pageSize", "in": "query", "schema": { "type": "integer", "format": "int32", "default": 10 } }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "post": {
+        "tags": [ "Cotizaciones" ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AddCotizacionCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/cotizaciones/{id}": {
+      "get": {
+        "tags": [ "Cotizaciones" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "put": {
+        "tags": [ "Cotizaciones" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateCotizacionCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "tags": [ "Cotizaciones" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/Disenos": {
+      "get": {
+        "tags": [ "Disenos" ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "post": {
+        "tags": [ "Disenos" ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AddDisenoCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/Disenos/{id}": {
+      "get": {
+        "tags": [ "Disenos" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "put": {
+        "tags": [ "Disenos" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateDisenoCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "tags": [ "Disenos" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/DisenoTelas": {
+      "get": {
+        "tags": [ "DisenoTelas" ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "post": {
+        "tags": [ "DisenoTelas" ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AddDisenoTelaCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/DisenoTelas/{id}": {
+      "get": {
+        "tags": [ "DisenoTelas" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "put": {
+        "tags": [ "DisenoTelas" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateDisenoTelaCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "tags": [ "DisenoTelas" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/prendas-base": {
+      "get": {
+        "tags": [ "PrendasBase" ],
+        "parameters": [
+          { "name": "pageNumber", "in": "query", "schema": { "type": "integer", "format": "int32", "default": 1 } },
+          { "name": "pageSize", "in": "query", "schema": { "type": "integer", "format": "int32", "default": 10 } }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "post": {
+        "tags": [ "PrendasBase" ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AddPrendaBaseCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/prendas-base/{id}": {
+      "get": {
+        "tags": [ "PrendasBase" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "put": {
+        "tags": [ "PrendasBase" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/UpdatePrendaBaseCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "tags": [ "PrendasBase" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/SolicitudesCotizacion": {
+      "get": {
+        "tags": [ "SolicitudesCotizacion" ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "post": {
+        "tags": [ "SolicitudesCotizacion" ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AddSolicitudCotizacionCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/SolicitudesCotizacion/{id}": {
+      "get": {
+        "tags": [ "SolicitudesCotizacion" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "put": {
+        "tags": [ "SolicitudesCotizacion" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateSolicitudCotizacionCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "tags": [ "SolicitudesCotizacion" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/SolicitudesCotizacion/cliente/{clienteId}": {
+      "get": {
+        "tags": [ "SolicitudesCotizacion" ],
+        "parameters": [ { "name": "clienteId", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/SolicitudesCotizacion/estado/{estado}": {
+      "get": {
+        "tags": [ "SolicitudesCotizacion" ],
+        "parameters": [ { "name": "estado", "in": "path", "required": true, "schema": { "type": "string" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/SolicitudTallas": {
+      "get": {
+        "tags": [ "SolicitudTallas" ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "post": {
+        "tags": [ "SolicitudTallas" ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AddSolicitudTallaCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/SolicitudTallas/{id}": {
+      "get": {
+        "tags": [ "SolicitudTallas" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "put": {
+        "tags": [ "SolicitudTallas" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateSolicitudTallaCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "tags": [ "SolicitudTallas" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/SolicitudTallas/solicitud/{solicitudId}": {
+      "get": {
+        "tags": [ "SolicitudTallas" ],
+        "parameters": [ { "name": "solicitudId", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/SolicitudTallas/solicitud/{solicitudId}/total-cantidad": {
+      "get": {
+        "tags": [ "SolicitudTallas" ],
+        "parameters": [ { "name": "solicitudId", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/Talleres": {
+      "get": {
+        "tags": [ "Talleres" ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "post": {
+        "tags": [ "Talleres" ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AddTallerCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/Talleres/{id}": {
+      "get": {
+        "tags": [ "Talleres" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "put": {
+        "tags": [ "Talleres" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateTallerCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "tags": [ "Talleres" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/TallerTelas/taller/{tallerId}": {
+      "get": {
+        "tags": [ "TallerTelas" ],
+        "parameters": [ { "name": "tallerId", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/TallerTelas/{tallerId}/{telaId}": {
+      "get": {
+        "tags": [ "TallerTelas" ],
+        "parameters": [
+          { "name": "tallerId", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } },
+          { "name": "telaId", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "put": {
+        "tags": [ "TallerTelas" ],
+        "parameters": [
+          { "name": "tallerId", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } },
+          { "name": "telaId", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateTallerTelaCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "tags": [ "TallerTelas" ],
+        "parameters": [
+          { "name": "tallerId", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } },
+          { "name": "telaId", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/TallerTelas": {
+      "post": {
+        "tags": [ "TallerTelas" ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AddTallerTelaCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/telas": {
+      "get": {
+        "tags": [ "Telas" ],
+        "parameters": [
+          { "name": "pageNumber", "in": "query", "schema": { "type": "integer", "format": "int32", "default": 1 } },
+          { "name": "pageSize", "in": "query", "schema": { "type": "integer", "format": "int32", "default": 10 } }
+        ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "post": {
+        "tags": [ "Telas" ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/AddTelaCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/telas/{id}": {
+      "get": {
+        "tags": [ "Telas" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "put": {
+        "tags": [ "Telas" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateTelaCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "tags": [ "Telas" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/Usuarios": {
+      "get": {
+        "tags": [ "Usuarios" ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    },
+    "/api/Usuarios/{id}": {
+      "get": {
+        "tags": [ "Usuarios" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      },
+      "put": {
+        "tags": [ "Usuarios" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "requestBody": {
+          "content": {
+            "application/json": { "schema": { "$ref": "#/components/schemas/UpdateUsuarioCommand" } }
+          }
+        },
+        "responses": { "200": { "description": "OK" } }
+      },
+      "delete": {
+        "tags": [ "Usuarios" ],
+        "parameters": [ { "name": "id", "in": "path", "required": true, "schema": { "type": "integer", "format": "int32" } } ],
+        "responses": { "200": { "description": "OK" } }
+      }
+    }
+  }
+}
