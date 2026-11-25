@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ApiException } from "@/lib/api";
 import { loginReal, rutaPorRol } from "@/lib/auth";
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const recienRegistrado = searchParams.get("registrado") === "1";
@@ -130,5 +130,24 @@ export default function LoginPage() {
         </div>
       </div>
     </main>
+  );
+}
+
+function LoginFallback() {
+  return (
+    <main className="min-h-screen bg-crema flex items-center justify-center px-4 py-8">
+      <div className="flex flex-col items-center gap-3" role="status" aria-live="polite">
+        <div className="w-9 h-9 border-4 border-terracota border-t-transparent rounded-full animate-spin" />
+        <p className="text-sm text-marron-claro">Cargando inicio de sesión...</p>
+      </div>
+    </main>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<LoginFallback />}>
+      <LoginContent />
+    </Suspense>
   );
 }
